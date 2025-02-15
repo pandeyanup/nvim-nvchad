@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = "BufWritePre", -- uncomment for format on save
+    event = "bufwritepre", -- uncomment for format on save
     opts = require "configs.conform",
   },
   {
@@ -14,8 +14,8 @@ return {
     "nvim-telescope/telescope.nvim",
     opts = function(_, conf)
       conf.defaults.mappings.i = {
-        ["<C-j>"] = require("telescope.actions").move_selection_next,
-        ["<Esc>"] = require("telescope.actions").close,
+        ["<c-j>"] = require("telescope.actions").move_selection_next,
+        ["<esc>"] = require("telescope.actions").close,
       }
       return conf
     end,
@@ -56,7 +56,7 @@ return {
     },
   },
   -- {
-  --   "luckasRanarison/tailwind-tools.nvim",
+  --   "luckasranarison/tailwind-tools.nvim",
   --   lazy = false,
   --   dependencies = { "nvim-treesitter/nvim-treesitter" },
   --   opts = {
@@ -71,10 +71,9 @@ return {
   --       min_length = nil, -- only conceal classes exceeding the provided length
   --       symbol = "󱏿", -- only a single character is allowed
   --       highlight = { -- extmark highlight options, see :h 'highlight'
-  --         fg = "#38BDF8",
+  --         fg = "#38bdf8",
   --       },
   --     },
   --     custom_filetypes = {}, -- see the extension section to learn how it works
-  --   },
-  -- },
+  --   }, },
 }
