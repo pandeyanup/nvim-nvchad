@@ -12,13 +12,25 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    opts = function(_, conf)
-      conf.defaults.mappings.i = {
-        ["<c-j>"] = require("telescope.actions").move_selection_next,
-        ["<esc>"] = require("telescope.actions").close,
-      }
-      return conf
-    end,
+    keys = {
+      -- add a keymap to browse plugin files
+      -- stylua: ignore
+      {
+        "<leader>fp",
+        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+        desc = "Find plugin file",
+      },
+    },
+    -- change some options
+    opts = {
+      defaults = {
+        layout_strategy = "horizontal",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
+        winblend = 0,
+        git_ignore = true,
+      },
+    },
   },
   {
     "williamboman/mason.nvim",
