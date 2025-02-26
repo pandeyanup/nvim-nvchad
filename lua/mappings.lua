@@ -9,11 +9,18 @@ map("i", "jk", "<ESC>")
 
 unmap("n", "<leader>h")
 
+-- Misc
+-- Select All (Ctrl+a)
+vim.api.nvim_set_keymap("n", "<C-a>", "ggVG", { noremap = true, silent = true })
+
 -- Nvim Tabs
 map("n", "<leader>ta", ":tabnew<CR>", { desc = "Create new tab" })
 map("n", "<leader>tn", ":tabnext<CR>", { desc = "Next tab" })
 map("n", "<leader>tp", ":tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close current tab" })
+
+-- Telescope Undo
+map("n", "<leader>U", "<cmd>Telescope undo<cr>", { desc = "Telescope undo" })
 
 -- Remove Unused Imports (TS)
 vim.api.nvim_set_keymap("n", "<leader>cr", "", {
