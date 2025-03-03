@@ -39,14 +39,14 @@ return {
       desc = "Toggle Zoom",
     },
     {
-      "<leader>.",
+      "<leader>sb",
       function()
         Snacks.scratch()
       end,
       desc = "Toggle Scratch Buffer",
     },
     {
-      "<leader>S",
+      "<leader>ss",
       function()
         Snacks.scratch.select()
       end,

@@ -46,6 +46,14 @@ return {
       },
     },
   },
+  -- Auto install LSP servers
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   lazy = false,
+  --   opts = {
+  --     auto_install = true,
+  --   },
+  -- },
   {
     "windwp/nvim-ts-autotag",
     ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
