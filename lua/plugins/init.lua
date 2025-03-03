@@ -4,12 +4,7 @@ return {
     event = "bufwritepre", -- uncomment for format on save
     opts = require "configs.conform",
   },
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
+  { "nvim-telescope/telescope-ui-select.nvim" },
   {
     "nvim-telescope/telescope.nvim",
     keys = {
@@ -29,6 +24,17 @@ return {
         sorting_strategy = "ascending",
         winblend = 0,
         git_ignore = true,
+        lsp_diagnostics = true,
+        file_ignore_patterns = { ".git/*", "node_modules/*", ".cache/*" },
+        lsp = {
+          layout_config = {
+            height = 0.85,
+            width = 0.95,
+          },
+        },
+        lsp_code_actions = {
+          theme = "cursor",
+        },
       },
     },
   },
