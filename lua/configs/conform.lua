@@ -18,6 +18,7 @@ local options = {
     -- analog = { "prettierd", "prettier" ,stop_after_first = true},
     -- ag = { "prettierd", "prettier",stop_after_first = true },
     rust = { "rust_analyzer" },
+    python = { "black", "ruff" },
   },
 
   -- formatters_by_ft = {

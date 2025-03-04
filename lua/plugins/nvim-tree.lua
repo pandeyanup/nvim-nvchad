@@ -2,6 +2,13 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+
+    -- add custom keymaps
+    -- keys = {
+    --   { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
+    --   { "<leader>r", "<cmd>NvimTreeRefresh<CR>", desc = "Refresh NvimTree" },
+    --   { "<leader>n", "<cmd>NvimTreeFindFile<CR>", desc = "Find file in NvimTree" },
+    -- },
     opts = {
       filters = { dotfiles = false },
       disable_netrw = true,

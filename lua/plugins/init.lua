@@ -49,6 +49,10 @@ return {
         "prettier",
         "lua-language-server",
         "rust-analyzer",
+        -- python
+        "ruff",
+        "pyright",
+        "black",
       },
     },
   },
@@ -72,12 +76,14 @@ return {
     opts = {
       ensure_installed = {
         "lua",
+        "markdown",
         "javascript",
         "typescript",
         "tsx",
         "html",
         "css",
         "bash",
+        "python",
       },
     },
   },
