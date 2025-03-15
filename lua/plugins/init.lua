@@ -49,6 +49,7 @@ return {
         "prettier",
         "lua-language-server",
         "rust-analyzer",
+        "astro",
         -- python
         "ruff",
         "pyright",
@@ -66,7 +67,19 @@ return {
   -- },
   {
     "windwp/nvim-ts-autotag",
-    ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    ft = {
+      "html",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "svelte",
+      "vue",
+      "xml",
+      "jsx",
+      "tsx",
+      "astro",
+    },
     config = function()
       require("nvim-ts-autotag").setup()
     end,
@@ -77,8 +90,10 @@ return {
       ensure_installed = {
         "lua",
         "markdown",
+        "astro",
         "javascript",
         "typescript",
+        "vue",
         "tsx",
         "html",
         "css",
