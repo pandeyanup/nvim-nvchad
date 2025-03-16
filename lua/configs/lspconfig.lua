@@ -13,6 +13,7 @@ local servers = {
   "pyright",
   "ruff",
   "rust_analyzer",
+  "volar",
   "astro",
 }
 local nvlsp = require "nvchad.configs.lspconfig"

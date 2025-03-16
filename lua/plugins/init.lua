@@ -46,6 +46,7 @@ return {
         "prettierd",
         "tailwindcss-language-server",
         "typescript-language-server",
+        "vue-language-server",
         "prettier",
         "lua-language-server",
         "rust-analyzer",
