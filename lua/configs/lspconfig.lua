@@ -15,6 +15,7 @@ local servers = {
   "rust_analyzer",
   "volar",
   "astro",
+  "gopls",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 

@@ -55,6 +55,21 @@ return {
         "ruff",
         "pyright",
         "black",
+        "go",
+        "gomod",
+      },
+      servers = {
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "workspace",
+              },
+            },
+          },
+        },
       },
     },
   },
