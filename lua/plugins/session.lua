@@ -13,6 +13,10 @@ return {
     suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
     load_on_setup = true,
     previewer = false,
+    auot_save = true,
+    lazy_support = true,
+    auto_restore = true,
+    auto_create = true,
     -- mappings = {
     --   -- Mode can be a string or a table, e.g. {"i", "n"} for both insert and normal mode
     --   delete_session = { "i", "<C-D>" },

@@ -20,11 +20,11 @@ map("n", "<leader>tp", ":tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close current tab" })
 
 -- Telescope Undo
-map("n", "<leader>tu", "<cmd>Telescope undo<cr>", { desc = "Telescope undo" })
+-- map("n", "<leader>tu", "<cmd>Telescope undo<cr>", { desc = "Telescope undo" })
 -- Telescope Jump
-map("n", "<leader>tj", "<cmd>Telescope jumplist<cr>", { desc = "Telescope jumplist" })
+-- map("n", "<leader>tj", "<cmd>Telescope jumplist<cr>", { desc = "Telescope jumplist" })
 -- Telescope buffer
-map("n", "<leader>tb", "<cmd>Telescope buffers<cr>", { desc = "Telescope buffers" })
+-- map("n", "<leader>tb", "<cmd>Telescope buffers<cr>", { desc = "Telescope buffers" })
 
 -- Remove Unused Imports (TS)
 vim.api.nvim_set_keymap("n", "<leader>cr", "", {
