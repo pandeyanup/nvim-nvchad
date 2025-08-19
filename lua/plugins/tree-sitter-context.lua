@@ -1,24 +1,25 @@
-return {
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "VeryLazy",
-    opts = {
-      enable = true,
-      max_lines = 3,
-      trim_scope = "outer",
-      mode = "cursor",
-      separator = nil,
-      zindex = 20,
-      on_attach = nil,
-    },
-    keys = {
-      {
-        "<leader>ut",
-        function()
-          require("treesitter-context").toggle()
-        end,
-        desc = "Toggle Treesitter Context",
-      },
-    },
-  },
-}
+return {}
+-- return {
+--   {
+--     "nvim-treesitter/nvim-treesitter-context",
+--     event = "VeryLazy",
+--     opts = {
+--       enable = true,
+--       max_lines = 3,
+--       trim_scope = "outer",
+--       mode = "cursor",
+--       separator = nil,
+--       zindex = 20,
+--       on_attach = nil,
+--     },
+--     keys = {
+--       {
+--         "<leader>ut",
+--         function()
+--           require("treesitter-context").toggle()
+--         end,
+--         desc = "Toggle Treesitter Context",
+--       },
+--     },
+--   },
+-- }
