@@ -33,6 +33,20 @@ require "options"
 require "nvchad.autocmds"
 require "autocmds"
 
+vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/lua_snippets"
+
 vim.schedule(function()
   require "mappings"
 end)
+
+-- Wrap dashboard open in pcall + slight delay so we only open if a window exists
+-- vim.api.nvim_create_autocmd("VimEnter", {                                                           n
+--   once = true,
+--   callback = function()
+--     vim.schedule(function()
+--       pcall(function()
+--         require("nvchad.nvdash").open()
+--       end)
+--     end)
+--   end,
+-- })
