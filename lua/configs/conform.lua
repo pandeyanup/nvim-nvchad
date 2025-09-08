@@ -16,6 +16,7 @@ local options = {
     jsonc = { "prettierd", "prettier", stop_after_first = true },
     yaml = { "prettierd", "prettier", stop_after_first = true },
     markdown = { "prettierd", "prettier", stop_after_first = true },
+    java = { "google-java-format" },
     -- graphql = { "prettierd", "prettier" ,stop_after_first = true},
     -- handlebars = { "prettierd", "prettier",stop_after_first = true },
     -- analog = { "prettierd", "prettier" ,stop_after_first = true},
@@ -43,11 +44,12 @@ local options = {
     lsp_format = "fallback",
   },
 
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
+  format_on_save = {
+    -- These options will be passed to conform.format()
+    timeout_ms = 500,
+    async = false,
+    lsp_fallback = true,
+  },
 }
 
 return options

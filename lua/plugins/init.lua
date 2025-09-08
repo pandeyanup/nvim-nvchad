@@ -51,6 +51,7 @@ return {
         "lua-language-server",
         "rust-analyzer",
         "astro",
+        "google-java-format",
         -- python
         "ruff",
         "pyright",
