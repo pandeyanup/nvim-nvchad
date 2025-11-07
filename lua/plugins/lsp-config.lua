@@ -10,12 +10,13 @@ return {
         "<cmd>lua vim.lsp.buf.rename()<CR>",
         { noremap = true, silent = true, desc = "LSP Rename" }
       )
-      -- vim.keymap.set(
-      --   "n",
-      --   "<leader>la",
-      --   "<cmd>lua vim.lsp.buf.code_action()<CR>",
-      --   { noremap = true, silent = true, desc = "LSP Code action" }
-      -- )
+      -- LSP code action
+      vim.keymap.set(
+        "n",
+        "<leader>ca",
+        "<cmd>lua vim.lsp.buf.code_action()<CR>",
+        { noremap = true, silent = true, desc = "LSP Code action" }
+      )
       vim.keymap.set(
         "n",
         "<leader>li",
