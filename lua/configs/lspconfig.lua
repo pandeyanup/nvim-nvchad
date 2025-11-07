@@ -1,15 +1,44 @@
--- load defaults i.e lua_lsp
-require("nvchad.configs.lspconfig").defaults()
+-- Load NvChad LSP defaults
+local nvlsp = require "nvchad.configs.lspconfig"
 
-local lspconfig = require "lspconfig"
+-- Helper to extend NvChad's on_attach with custom mappings
+local function on_attach(client, bufnr)
+  if nvlsp.on_attach then
+    nvlsp.on_attach(client, bufnr)
+  end
 
-local servers = {
+  -- Global LSP keymaps
+  local opts = { buffer = bufnr, silent = true, noremap = true }
+
+  vim.keymap.set(
+    "n",
+    "<leader>ca",
+    vim.lsp.buf.code_action,
+    vim.tbl_extend("force", opts, {
+      desc = "Code Action",
+    })
+  )
+
+  -- You can also add other universal LSP shortcuts here if you want:
+  -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+  -- vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+end
+
+-- Register global defaults for all LSPs
+vim.lsp.config("*", {
+  on_attach = on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+})
+
+-- Enable servers
+vim.lsp.enable {
   "bashls",
   "html",
   "cssls",
-  "ts_ls",
+  "clangd",
   "tailwindcss",
-  "eslint",
   "pyright",
   "ruff",
   "rust_analyzer",
@@ -17,20 +46,6 @@ local servers = {
   "astro",
   "gopls",
 }
-local nvlsp = require "nvchad.configs.lspconfig"
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
-end
-
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+-- Load TypeScript-specific setup
+require("configs.typescript").setup()
