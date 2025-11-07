@@ -44,6 +44,7 @@ vim.lsp.enable {
   "rust_analyzer",
   "vue_ls",
   "astro",
+  "eslint",
   "gopls",
 }
 
