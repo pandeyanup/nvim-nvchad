@@ -14,10 +14,29 @@ unmap("n", "<leader>h")
 vim.api.nvim_set_keymap("n", "<C-a>", "ggVG", { noremap = true, silent = true })
 
 -- Nvim Tabs
-map("n", "<leader>ta", ":tabnew<CR>", { desc = "Create new tab" })
-map("n", "<leader>tn", ":tabnext<CR>", { desc = "Next tab" })
-map("n", "<leader>tp", ":tabprevious<CR>", { desc = "Previous tab" })
-map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close current tab" })
+map("n", "<leader>cta", ":tabnew<CR>", { desc = "Create new tab" })
+map("n", "<leader>ctn", ":tabnext<CR>", { desc = "Next tab" })
+map("n", "<leader>ctp", ":tabprevious<CR>", { desc = "Previous tab" })
+map("n", "<leader>ctc", ":tabclose<CR>", { desc = "Close current tab" })
+
+-- Optional: which-key integration
+pcall(function()
+  require("which-key").add {
+    { "<leader>ct", group = "Tabs" },
+    {
+      "<leader>ce",
+      group = "Extra",
+    },
+    {
+      "<leader>ch",
+      group = "Harpoon",
+    },
+    {
+      "<leader>cs",
+      group = "Session",
+    },
+  }
+end)
 
 -- Telescope Undo
 -- map("n", "<leader>tu", "<cmd>Telescope undo<cr>", { desc = "Telescope undo" })
@@ -39,18 +58,29 @@ map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close current tab" })
 -- end, { desc = "Toggle insert/normal mode", silent = true, noremap = true })
 
 -- Vertical split
-vim.keymap.set("n", "<leader>cv", "<cmd>vsplit<CR>", {
+map("n", "<leader>cv", "<cmd>vsplit<CR>", {
   desc = "Vertical Split",
   silent = true,
   noremap = true,
 })
 
+-- map("n", "<leader>qq", "<cmd>quitall<CR>", {
+--   desc = "Quit All",
+--   silent = true,
+--   noremap = true,
+-- })
+map("n", "<leader>qc", "<cmd>quit<CR>", {
+  desc = "Quit Current",
+  silent = true,
+  noremap = true,
+})
+
 -- Horizontal split
-vim.keymap.set("n", "<leader>ch", "<cmd>split<CR>", {
+map("n", "<leader>ceh", "<cmd>split<CR>", {
   desc = "Horizontal Split",
   silent = true,
   noremap = true,
 })
 
 -- Exit insert mode with 'jk'
-vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode", silent = true })
+map("i", "jk", "<Esc>", { desc = "Exit insert mode", silent = true })

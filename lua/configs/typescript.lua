@@ -13,7 +13,7 @@ local function setup_json_as_ts(bufnr)
   end, { nargs = "?", desc = "Paste JSON as TS type" })
 
   -- Normal mode keymap
-  vim.keymap.set("n", "<leader>cj", function()
+  vim.keymap.set("n", "<leader>cej", function()
     pj.paste_ts { name = "Root" } -- from system clipboard (+)
   end, {
     buffer = bufnr,

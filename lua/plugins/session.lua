@@ -3,9 +3,9 @@ return {
   lazy = false,
   keys = {
     -- Will use Telescope if installed or a vim.ui.select picker otherwise
-    { "<leader>bg", "<cmd>AutoSession search<CR>", desc = "Search session" },
-    { "<leader>bs", "<cmd>AutoSession save<CR>", desc = "Save session" },
-    { "<leader>ba", "<cmd>AutoSession toggle<CR>", desc = "Toggle autosave session" },
+    { "<leader>csg", "<cmd>AutoSession search<CR>", desc = "Search session" },
+    { "<leader>css", "<cmd>AutoSession save<CR>", desc = "Save session" },
+    { "<leader>csa", "<cmd>AutoSession toggle<CR>", desc = "Toggle autosave session" },
   },
   ---@module "auto-session"
   ---@type AutoSession.Config

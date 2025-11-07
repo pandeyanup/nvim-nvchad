@@ -179,7 +179,7 @@ return {
         desc = "Grep Open Buffers",
       },
       {
-        "<leader>sg",
+        "<leader>cg",
         function()
           Snacks.picker.grep()
         end,
@@ -328,7 +328,7 @@ return {
         desc = "Resume",
       },
       {
-        "<leader>su",
+        "<leader>cu",
         function()
           Snacks.picker.undo()
         end,
