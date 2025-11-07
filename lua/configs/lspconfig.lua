@@ -42,7 +42,7 @@ vim.lsp.enable {
   "pyright",
   "ruff",
   "rust_analyzer",
-  "volar",
+  "vue_ls",
   "astro",
   "gopls",
 }

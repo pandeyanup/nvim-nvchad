@@ -1,15 +1,6 @@
 local M = {}
 local nvlsp = require "nvchad.configs.lspconfig"
 
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = { vim.api.nvim_buf_get_name(0) },
-    title = "",
-  }
-  vim.lsp.buf.execute_command(params)
-end
-
 local function setup_json_as_ts(bufnr)
   local ok, pj = pcall(require, "scripts.json-as-ts")
   if not ok then
@@ -116,6 +107,7 @@ local function setup_ts_ls()
             -- Organize imports
             vim.lsp.buf.code_action {
               apply = true,
+              async = true,
               context = {
                 only = { "source.organizeImports.ts" },
                 diagnostics = {},
@@ -124,6 +116,7 @@ local function setup_ts_ls()
             -- Remove unused imports
             vim.lsp.buf.code_action {
               apply = true,
+              async = true,
               context = {
                 only = { "source.removeUnused.ts" },
                 diagnostics = {},
@@ -177,41 +170,41 @@ local function setup_ts_ls()
   vim.lsp.enable "ts_ls"
 end
 
-local function setup_eslint()
-  vim.lsp.config("eslint", {
-    on_attach = function(client, bufnr)
-      if nvlsp.on_attach then
-        nvlsp.on_attach(client, bufnr)
-      end
-
-      -- Auto-fix on save
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        command = "EslintFixAll",
-      })
-    end,
-
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-
-    cmd = { "vscode-eslint-language-server", "--stdio" },
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-    },
-    root_markers = { ".eslintrc", ".eslintrc.js", "package.json", ".git" },
-  })
-
-  vim.lsp.enable "eslint"
-end
+-- local function setup_eslint()
+--   vim.lsp.config("eslint", {
+--     on_attach = function(client, bufnr)
+--       if nvlsp.on_attach then
+--         nvlsp.on_attach(client, bufnr)
+--       end
+--
+--       -- Auto-fix on save
+--       -- vim.api.nvim_create_autocmd("BufWritePre", {
+--       --   buffer = bufnr,
+--       --   command = "EslintFixAll",
+--       -- })
+--     end,
+--
+--     on_init = nvlsp.on_init,
+--     capabilities = nvlsp.capabilities,
+--
+--     cmd = { "vscode-eslint-language-server", "--stdio" },
+--     filetypes = {
+--       "javascript",
+--       "javascriptreact",
+--       "javascript.jsx",
+--       "typescript",
+--       "typescriptreact",
+--       "typescript.tsx",
+--     },
+--     root_markers = { ".eslintrc", ".eslintrc.js", "package.json", ".git" },
+--   })
+--
+--   vim.lsp.enable "eslint"
+-- end
 
 function M.setup()
   setup_ts_ls()
-  setup_eslint()
+  -- setup_eslint()
 end
 
 return M
