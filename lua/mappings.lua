@@ -38,6 +38,68 @@ pcall(function()
   }
 end)
 
+-- Horizontal Terminal
+map({ "n", "t" }, "<A-/>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "Toggle Horizontal Terminal" })
+
+-- Vertical split
+map("n", "<leader>cv", "<cmd>vsplit<CR>", {
+  desc = "Vertical Split",
+  silent = true,
+  noremap = true,
+})
+
+map("n", "<leader>qc", "<cmd>quit<CR>", {
+  desc = "Quit Current",
+  silent = true,
+  noremap = true,
+})
+
+-- Horizontal split
+map("n", "<leader>ceh", "<cmd>split<CR>", {
+  desc = "Horizontal Split",
+  silent = true,
+  noremap = true,
+})
+
+-- Exit insert mode with 'jk'
+map("i", "jk", "<Esc>", { desc = "Exit insert mode", silent = true })
+
+-- map({ "n", "t" }, "<c-/>", function()
+--   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+-- end, { desc = "terminal toggleable horizontal term" })
+
+-- Vetrical Terminal
+-- vim.keymap.set(
+--   "n",
+--   "<leader>t",
+--   ":12split | terminal<CR>",
+--   { noremap = true, silent = true, desc = "Open Vertical Terminal" }
+-- )
+-- vim.keymap.set("n", "<leader>tf", function()
+--   -- Define floating window dimensions
+--   local width = math.floor(vim.o.columns * 0.8)
+--   local height = math.floor(vim.o.lines * 0.8)
+--   local row = math.floor((vim.o.lines - height) / 2)
+--   local col = math.floor((vim.o.columns - width) / 2)
+--
+--   -- Create a floating window
+--   local buf = vim.api.nvim_create_buf(false, true)
+--   vim.api.nvim_open_win(buf, true, {
+--     relative = "editor",
+--     width = width,
+--     height = height,
+--     row = row,
+--     col = col,
+--     style = "minimal",
+--     border = "rounded",
+--   })
+--
+--   -- Start terminal inside it
+--   vim.fn.termopen(vim.o.shell)
+--   vim.cmd "startinsert"
+-- end, { noremap = true, silent = true, desc = "Open floating terminal" })
 -- Telescope Undo
 -- map("n", "<leader>tu", "<cmd>Telescope undo<cr>", { desc = "Telescope undo" })
 -- Telescope Jump
@@ -56,31 +118,3 @@ end)
 --     vim.api.nvim_feedkeys("i", "n", false)
 --   end
 -- end, { desc = "Toggle insert/normal mode", silent = true, noremap = true })
-
--- Vertical split
-map("n", "<leader>cv", "<cmd>vsplit<CR>", {
-  desc = "Vertical Split",
-  silent = true,
-  noremap = true,
-})
-
--- map("n", "<leader>qq", "<cmd>quitall<CR>", {
---   desc = "Quit All",
---   silent = true,
---   noremap = true,
--- })
-map("n", "<leader>qc", "<cmd>quit<CR>", {
-  desc = "Quit Current",
-  silent = true,
-  noremap = true,
-})
-
--- Horizontal split
-map("n", "<leader>ceh", "<cmd>split<CR>", {
-  desc = "Horizontal Split",
-  silent = true,
-  noremap = true,
-})
-
--- Exit insert mode with 'jk'
-map("i", "jk", "<Esc>", { desc = "Exit insert mode", silent = true })
