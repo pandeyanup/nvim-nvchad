@@ -38,25 +38,6 @@ local function setup_json_as_ts(bufnr)
   end)
 end
 
-local function run_code_action(context)
-  local params = vim.lsp.util.make_range_params()
-  params.context = context
-
-  vim.lsp.buf_request_all(0, "textDocument/codeAction", params, function(results)
-    for _, res in pairs(results or {}) do
-      if res.result then
-        for _, action in ipairs(res.result) do
-          if action.edit or type(action.command) == "table" then
-            vim.schedule(function()
-              vim.lsp.buf.execute_command(action.command or action)
-            end)
-          end
-        end
-      end
-    end
-  end)
-end
-
 local function setup_ts_ls()
   vim.lsp.config("ts_ls", {
     on_attach = function(client, bufnr)
@@ -100,71 +81,71 @@ local function setup_ts_ls()
       -- JSON → TS helper
       setup_json_as_ts(bufnr)
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        callback = function()
-          vim.schedule(function()
-            -- Organize imports
-            vim.lsp.buf.code_action {
-              apply = true,
-              async = true,
-              context = {
-                only = { "source.organizeImports.ts" },
-                diagnostics = {},
-              },
-            }
-            -- Remove unused imports
-            vim.lsp.buf.code_action {
-              apply = true,
-              async = true,
-              context = {
-                only = { "source.removeUnused.ts" },
-                diagnostics = {},
-              },
-            }
-
-            -- Format code
-            local ok_conform, conform = pcall(require, "conform")
-            if ok_conform then
-              conform.format { async = true, lsp_fallback = true }
-            elseif vim.lsp.buf.format then
-              vim.lsp.buf.format { async = true }
-            end
-          end)
-        end,
-        desc = "Auto organize/remove/format before save",
-      })
+      -- vim.api.nvim_create_autocmd("BufWritePre", {
+      --   buffer = bufnr,
+      --   callback = function()
+      --     vim.schedule(function()
+      --       -- Organize imports
+      --       vim.lsp.buf.code_action {
+      --         apply = true,
+      --         async = true,
+      --         context = {
+      --           only = { "source.organizeImports.ts" },
+      --           diagnostics = {},
+      --         },
+      --       }
+      --       -- Remove unused imports
+      --       vim.lsp.buf.code_action {
+      --         apply = true,
+      --         async = true,
+      --         context = {
+      --           only = { "source.removeUnused.ts" },
+      --           diagnostics = {},
+      --         },
+      --       }
+      --
+      --       -- Format code
+      --       local ok_conform, conform = pcall(require, "conform")
+      --       if ok_conform then
+      --         conform.format { async = true, lsp_fallback = true }
+      --       elseif vim.lsp.buf.format then
+      --         vim.lsp.buf.format { async = true }
+      --       end
+      --     end)
+      --   end,
+      --   desc = "Auto organize/remove/format before save",
+      -- })
     end,
 
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
 
-    cmd = { "typescript-language-server", "--stdio" },
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-    },
-    root_markers = {
-      "tsconfig.json",
-      "jsconfig.json",
-      "package.json",
-      ".git",
-    },
-    init_options = { hostInfo = "neovim" },
-    settings = {
-      typescript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayVariableTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-        },
-      },
-    },
+    -- cmd = { "typescript-language-server", "--stdio" },
+    -- filetypes = {
+    --   "javascript",
+    --   "javascriptreact",
+    --   "javascript.jsx",
+    --   "typescript",
+    --   "typescriptreact",
+    --   "typescript.tsx",
+    -- },
+    -- root_markers = {
+    --   "tsconfig.json",
+    --   "jsconfig.json",
+    --   "package.json",
+    --   ".git",
+    -- },
+    -- init_options = { hostInfo = "neovim" },
+    -- settings = {
+    --   typescript = {
+    --     inlayHints = {
+    --       includeInlayParameterNameHints = "all",
+    --       includeInlayVariableTypeHints = true,
+    --       includeInlayFunctionLikeReturnTypeHints = true,
+    --       includeInlayPropertyDeclarationTypeHints = true,
+    --     },
+    --   },
+    -- },
   })
 
   vim.lsp.enable "ts_ls"
