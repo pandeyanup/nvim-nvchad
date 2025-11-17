@@ -3,11 +3,18 @@ require "nvchad.mappings"
 -- add yours here
 local map = vim.keymap.set
 local unmap = vim.keymap.del
+local opts = { noremap = true, silent = true }
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 unmap("n", "<leader>h")
+
+-- disable ctrl + z
+map("n", "<C-z>", "<Nop>", opts)
+map("i", "<C-z>", "<Nop>", opts)
+map("v", "<C-z>", "<Nop>", opts)
+map("c", "<C-z>", "<Nop>", opts)
 
 -- Misc
 -- Select All (Ctrl+a)
