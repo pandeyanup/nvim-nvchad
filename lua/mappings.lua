@@ -6,7 +6,6 @@ local unmap = vim.keymap.del
 local opts = { noremap = true, silent = true }
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
 
 unmap("n", "<leader>h")
 
@@ -71,7 +70,7 @@ map("n", "<leader>ceh", "<cmd>split<CR>", {
 })
 
 -- Exit insert mode with 'jk'
-map("i", "jk", "<Esc>", { desc = "Exit insert mode", silent = true })
+map({ "i", "v" }, "jk", "<Esc>", { desc = "Exit insert mode", silent = true })
 
 -- map({ "n", "t" }, "<c-/>", function()
 --   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
