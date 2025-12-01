@@ -24,6 +24,7 @@ map("n", "<leader>cta", ":tabnew<CR>", { desc = "Create new tab" })
 map("n", "<leader>ctn", ":tabnext<CR>", { desc = "Next tab" })
 map("n", "<leader>ctp", ":tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<leader>ctc", ":tabclose<CR>", { desc = "Close current tab" })
+map("n", "<leader>ctt", ":tab term<CR>", { desc = "Open terminal in new tab" })
 
 -- Optional: which-key integration
 pcall(function()
@@ -40,6 +41,10 @@ pcall(function()
     {
       "<leader>cs",
       group = "Session",
+    },
+    {
+      "<leader>cw",
+      group = "Workspaces",
     },
   }
 end)

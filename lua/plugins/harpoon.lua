@@ -28,7 +28,7 @@ return {
           desc = "Add file to harpoon",
         },
         {
-          "<leader>chh",
+          "<leader>cho",
           function()
             local harpoon = require "harpoon"
             harpoon.ui:toggle_quick_menu(harpoon:list())
