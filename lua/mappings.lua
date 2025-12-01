@@ -70,7 +70,7 @@ map("n", "<leader>ceh", "<cmd>split<CR>", {
 })
 
 -- Exit insert mode with 'jk'
-map({ "i", "v" }, "jk", "<Esc>", { desc = "Exit insert mode", silent = true })
+map("i", "jk", "<Esc>", { desc = "Exit insert mode", silent = true })
 
 -- map({ "n", "t" }, "<c-/>", function()
 --   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }

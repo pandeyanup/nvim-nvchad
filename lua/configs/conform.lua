@@ -22,7 +22,7 @@ local options = {
     -- analog = { "prettierd", "prettier" ,stop_after_first = true},
     -- ag = { "prettierd", "prettier",stop_after_first = true },
     rust = { "rust_analyzer" },
-    python = { "black", "ruff" },
+    python = { "ruff", "black" },
   },
 
   -- formatters_by_ft = {
@@ -49,6 +49,18 @@ local options = {
     timeout_ms = 500,
     async = false,
     lsp_fallback = true,
+  },
+  formatters = {
+    prettierd = {
+      cwd = function(ctx)
+        return vim.fn.getcwd() -- or custom root below
+      end,
+    },
+    prettier = {
+      cwd = function(ctx)
+        return vim.fn.getcwd() -- or custom root below
+      end,
+    },
   },
 }
 

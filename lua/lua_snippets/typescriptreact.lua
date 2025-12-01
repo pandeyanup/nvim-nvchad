@@ -49,4 +49,19 @@ return {
       "};",
     },
   }),
+  s("ustate", {
+    t "const [",
+    -- state name
+    i(1, "state"),
+    t ", ",
+    -- setter name: capitalized version of state
+    f(function(args)
+      local state = args[1][1]
+      return "set" .. state:sub(1, 1):upper() .. state:sub(2)
+    end, { 1 }),
+    t "] = useState(",
+    -- initial value
+    i(2, "value"),
+    t ");",
+  }),
 }
