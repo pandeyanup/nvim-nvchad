@@ -58,6 +58,9 @@ return {
         "black",
         "go",
         "gomod",
+
+        -- zig
+        "zls",
       },
       servers = {
         pyright = {
@@ -116,6 +119,7 @@ return {
         "css",
         "bash",
         "python",
+        "zig",
       },
     },
   },

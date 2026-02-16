@@ -46,6 +46,7 @@ vim.lsp.enable {
   "astro",
   "eslint",
   "gopls",
+  "zls",
 }
 
 -- Load TypeScript-specific setup
