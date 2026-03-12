@@ -10,10 +10,10 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 unmap("n", "<leader>h")
 
 -- disable ctrl + z
-map("n", "<C-z>", "<Nop>", opts)
-map("i", "<C-z>", "<Nop>", opts)
-map("v", "<C-z>", "<Nop>", opts)
-map("c", "<C-z>", "<Nop>", opts)
+-- map("n", "<C-z>", "<Nop>", opts)
+-- map("i", "<C-z>", "<Nop>", opts)
+-- map("v", "<C-z>", "<Nop>", opts)
+-- map("c", "<C-z>", "<Nop>", opts)
 
 -- Misc
 -- Select All (Ctrl+a)
