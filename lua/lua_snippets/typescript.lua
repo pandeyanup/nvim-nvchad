@@ -71,7 +71,7 @@ return {
     f(function(args)
       return pascal(args[1][1])
     end, { 1 }),
-    t { "Store>((set) => ({", "  ...initialStates,", "  reset" },
+    t { "Store>()((set) => ({", "  ...initialStates,", "  reset" },
 
     -- resetNamedState implementation
     f(function(args)
