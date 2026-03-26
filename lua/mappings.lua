@@ -5,19 +5,6 @@ local map = vim.keymap.set
 local unmap = vim.keymap.del
 local opts = { noremap = true, silent = true }
 
--- START: spectre (Find and replace)
-local spectre = require "spectre"
-vim.keymap.set("n", "<leader>S", function()
-  spectre.toggle()
-end, { desc = "Toggle Spectre" })
-vim.keymap.set("n", "<leader>sw", function()
-  spectre.open_visual { select_word = true }
-end, { desc = "Search current word" })
-vim.keymap.set("v", "<leader>sw", function()
-  spectre.open_visual()
-end, { desc = "Search selection" })
--- END: spectre
-
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
 unmap("n", "<leader>h")
