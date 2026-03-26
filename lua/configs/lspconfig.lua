@@ -1,6 +1,22 @@
 -- Load NvChad LSP defaults
 local nvlsp = require "nvchad.configs.lspconfig"
 
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = "●",
+    spacing = 2,
+    source = "if_many",
+  },
+  signs = true,
+  underline = true,
+  severity_sort = true,
+  update_in_insert = false,
+  float = {
+    border = "rounded",
+    source = true,
+  },
+}
+
 -- Helper to extend NvChad's on_attach with custom mappings
 -- local function on_attach(client, bufnr)
 --   if nvlsp.on_attach then
