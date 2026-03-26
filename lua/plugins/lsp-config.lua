@@ -1,6 +1,17 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "SmiteshP/nvim-navic",
+        opts = {
+          separator = " > ",
+          highlight = true,
+          depth_limit = 4,
+          lazy_update_context = false,
+        },
+      },
+    },
     config = function()
       require "configs.lspconfig"
 

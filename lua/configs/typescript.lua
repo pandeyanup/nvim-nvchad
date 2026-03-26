@@ -1,5 +1,13 @@
 local M = {}
 local nvlsp = require "nvchad.configs.lspconfig"
+local ok_navic, navic = pcall(require, "nvim-navic")
+local navic_winbar = "%{%v:lua.winbar_navic_location()%}"
+
+local function set_buf_winbar(bufnr)
+  for _, winid in ipairs(vim.fn.win_findbuf(bufnr)) do
+    vim.wo[winid].winbar = navic_winbar
+  end
+end
 
 local function setup_json_as_ts(bufnr)
   local ok, pj = pcall(require, "scripts.json-as-ts")
@@ -43,6 +51,11 @@ local function setup_ts_ls()
     on_attach = function(client, bufnr)
       if nvlsp.on_attach then
         nvlsp.on_attach(client, bufnr)
+      end
+
+      if ok_navic and client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+        set_buf_winbar(bufnr)
       end
 
       -- Disable formatting; Prettier will handle it
